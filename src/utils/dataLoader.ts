@@ -1,19 +1,14 @@
 import Papa from "papaparse";
 
-interface DataRow {
-  number: number;
-  mod3: number;
-  mod4: number;
-  mod5: number;
-  mod6: number;
-}
+export type DynamicRow = Record<string, string|number>
 
-export const csvData = async (filePath: string): Promise<DataRow[]> => {
+
+export const csvData = async (filePath: string): Promise<DynamicRow[]> => {
   const response = await fetch(filePath);
   const csvText = await response.text();
 
   return new Promise((resolve) => {
-    Papa.parse<DataRow>(csvText, {
+    Papa.parse<DynamicRow>(csvText, {
       header: true,
       dynamicTyping: true,
       complete: (result) => {
