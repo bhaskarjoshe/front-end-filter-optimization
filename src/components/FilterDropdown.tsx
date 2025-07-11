@@ -6,13 +6,14 @@ interface Props {
   options: (string | number | null | undefined)[];
   selected: (string | number | null | undefined)[];
   onChange: (selected: (string | number)[]) => void;
+  onOpen: () => void;
 }
 
 const FilterDropdown: React.FC<Props> = ({
   column,
   options,
-  selected,
   onChange,
+  onOpen,
 }) => {
   const selectOptions = options
     .filter((v) => v !== null && v !== undefined)
@@ -26,13 +27,14 @@ const FilterDropdown: React.FC<Props> = ({
         displayValue="name"
         placeholder={`Filter by ${column}`}
         showCheckbox
+        onSearch={() => onOpen()}
         closeOnSelect={false}
         avoidHighlightFirstOption
-        onSelect={(selectedList) => {
+        onSelect={(selectedList:{ name: string | number }[]) => {
           const values = selectedList.map((item) => item.name);
           onChange(values);
         }}
-        onRemove={(selectedList) => {
+        onRemove={(selectedList:{ name: string | number }[]) => {
           const values = selectedList.map((item) => item.name);
           onChange(values);
         }}
