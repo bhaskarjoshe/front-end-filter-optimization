@@ -2,7 +2,10 @@
 
 A modern React + TypeScript web application for interactive data exploration and filtering of CSV datasets. This dashboard allows you to load, view, and filter large CSV files with a responsive, user-friendly interface.
 
+ [Dynamic Filter Dashboard (Netlify) ](https://beamish-snickerdoodle-e6d25b.netlify.app/)
+
 ---
+
 
 ## Features
 
